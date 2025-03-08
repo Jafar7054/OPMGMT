@@ -1,0 +1,40 @@
+package com.opmgmt.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import lombok.Data;
+
+@Entity
+@Data
+public class SftpInfo {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+
+	 private String sftpHost;
+
+	   
+	    private Integer sftpPort;
+
+	    
+	    private String sftpUsername;
+
+	    
+	    private String sftpPassword;
+
+	    
+	    private String remoteDir;
+
+	    
+	    private String localDir;
+	    
+	    @OneToOne(mappedBy="sftpInfo")
+	    @JsonIgnore
+	    private ScheduledEvents scheduledEvents;
+}
